@@ -65,4 +65,4 @@ int main() {
 
     cout << "Duyet nguoc: ";
     printBackward(a, n);
-}
+} 
