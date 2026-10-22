@@ -1,0 +1,85 @@
+```cpp
+#include <iostream>
+using namespace std;
+
+struct Node {
+    int data;
+    Node* next;
+};
+
+class Queue {
+private:
+    Node* frontNode;
+    Node* rearNode;
+    int count;
+
+public:
+    Queue() {
+        frontNode = nullptr;
+        rearNode = nullptr;
+        count = 0;
+    }
+
+    ~Queue() {
+        while (frontNode != nullptr) {
+            Node* temp = frontNode;
+            frontNode = frontNode->next;
+            delete temp;
+        }
+        rearNode = nullptr;
+    }
+
+    bool isEmpty() {
+        return frontNode == nullptr;
+    }
+
+    void enqueue(int x) {
+        Node* p = new Node;
+        p->data = x;
+        p->next = nullptr;
+
+        if (isEmpty()) {
+            frontNode = p;
+            rearNode = p;
+        } else {
+            rearNode->next = p;
+            rearNode = p;
+        }
+
+        count++;
+    }
+
+    void dequeue() {
+        if (isEmpty()) {
+            cout << "Queue rong!\n";
+            return;
+        }
+
+        Node* temp = frontNode;
+        frontNode = frontNode->next;
+        delete temp;
+        count--;
+
+        if (frontNode == nullptr) {
+            rearNode = nullptr;
+        }
+    }
+
+    int front() {
+        if (isEmpty()) {
+            cout << "Queue rong!\n";
+            return -1;
+        }
+        return frontNode->data;
+    }
+
+    int size() {
+        return count;
+    }
+
+    void display() {
+        Node* p = frontNode;
+
+        while (p
+```
+
